@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import *
 from .forms import *
 import joblib
-import numpy as np
+import numpy as npy
 import keras
 import tensorflow as tf
 
@@ -11,18 +11,23 @@ def home(request):
     return render(request,"test_app/home.html")
 
 def test(request):
-    form = FeatureForm
+    form1 = FeatureForm
+    form2 = ReferenceForm
 
-    data = {"form":form}
+    data = {"form1":form1, "form2":form2}
     return render(request,"test_app/test.html", data)
 
 def about(request):
     return render(request,"test_app/about.html")
 
 def predict(request):
-   cls=joblib.load('svm_model.pkl')
-   lis=[]
+   
+   #load ml models
+   cls1=joblib.load('xg_model.pkl')
+   cls2=joblib.load('cart_model.pkl')
 
+   #get user np features
+   lis=[]
    val01 = request.POST.get('val1')
    val1 = float(val01)
    val02 = request.POST.get('val2')
@@ -41,8 +46,40 @@ def predict(request):
    val8 = float(val08)
    val09 = request.POST.get('val9')
    val9 = float(val09)
-   val010 = request.POST.get('val10')
-   val10 = float(val010)
+
+   #get reference np features
+   np = request.POST.get('np')
+   me = request.POST.get('me')
+   bt = request.POST.get('bt')
+   ns = request.POST.get('ns')
+   dm = request.POST.get('dm')
+   ta = request.POST.get('ta')
+   sc = request.POST.get('sc')
+
+   ref = Reference.objects.get(np__exact=np,me__exact=me,bt__exact=bt,ns__exact=ns,dm__exact=dm,ta__exact=ta,sc__exact=sc)
+   
+   f1 = ref.f1
+   f2 = ref.f2
+   f3 = ref.f3
+   f4 = ref.f4
+   f5 = ref.f5
+   f6 = ref.f6
+   f7 = ref.f7
+   f8 = ref.f8
+   f9 = ref.f9
+   f10 = ref.f10
+
+   #get perturbation values
+   val1 = val1 - f1
+   val2 = val2 - f2
+   val3 = val3 - f3
+   val4 = val4 - f4
+   val5 = val5 - f5
+   val6 = val6 - f6
+   val7 = val7 - f7
+   val8 = val8 - f8
+   val9 = val9 - f9
+   val10 = f10
 
    #normalize input
    val1 = (val1 - (-9.599)) / (10.666 - (-9.599))
@@ -68,22 +105,31 @@ def predict(request):
    lis.append(val10)
    print(lis)
 
-   data_array = np.asarray(lis)
+   data_array = npy.asarray(lis)
    arr= data_array.reshape(1,10)
    print(arr)
 
-   ans = cls.predict(arr)
-   print(ans)
+   ans1 = cls1.predict(arr)
+   print(ans1)
 
-   finalans=''
-   if(ans==1):
-      finalans='Your nanoparticle is NON-TOXIC'
-   elif(ans==0):
-      finalans = 'Your nanoparticle is TOXIC'
-   print(finalans)
-   return render(request, "test_app/result.html",{'ans':finalans,"val1":val01, "val2":val02,"val3":val03, "val4":val04,
-                                                  "val5":val05, "val6":val06,"val7":val07, "val8":val08,"val9":val09, "val10":val010,})
+   ans2 = cls2.predict(arr)
+   print(ans2)
 
-                        
+   final1=''
+   final2=''
+
+   if(ans1==1):
+      final1='Your nanoparticle is NON-TOXIC'
+   elif(ans1==0):
+      final1 = 'Your nanoparticle is TOXIC'
+   print(final1)
+
+   if(ans2==1):
+      final2='Your nanoparticle is NON-TOXIC'
+   elif(ans2==0):
+      final2 = 'Your nanoparticle is TOXIC'
+   print(final2)
+
+   return render(request, "test_app/result.html",{'xg_ans':final1,'cart_ans':final2})
 
 

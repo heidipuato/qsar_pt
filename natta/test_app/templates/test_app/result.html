@@ -2,93 +2,102 @@
 {% block content %} 
 
 <br>
-<br>
 <div class="row">
+
+  <!-- Results for XGBOOST -->
     <div class="col-sm-6 mb-3 mb-sm-0">
-        <form action="result">
+        
       <div class="card">
-      <div class="card-header">
-        Input
-      </div>
+        <div class="card-header">
+            Results
+          </div>
         <div class="card-body">
+          {% if xg_ans == 'Your nanoparticle is NON-TOXIC' %}
+          <h5 class="card-title">XGBoost Results: <span style="color: green">{{ xg_ans }}</span>  </h5>
+          {% else %}
+          <h5 class="card-title">XGBoost Results: <span style="color: red">{{ xg_ans }}</span>  </h5>
+          {% endif %}
+          <br>
+          {% if cart_ans == 'Your nanoparticle is NON-TOXIC' %}
+          <h5 class="card-title">CART Results: <span style="color: green">{{ cart_ans }}</span>  </h5>
+          {% else %}
+          <h5 class="card-title">CART Results: <span style="color: red">{{ cart_ans }}</span>  </h5>
+          {% endif %}
+          <br>
+          <!-- <p class="card-text">  -->
+            <div class="row">
+              <div class="col">
+              <div class="mb-3">
+             <table class="table sm table-bordered">
+              <thead class="thead-info">
+                <th>
+                Performance Metrics
+                </th>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                Accuracy: 99.63%
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Precision: 99.79%
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Specificity: 98.64%
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Recall: 99.79%
+              </td>
+            </tr>
+            <tr>
+              <td>
+                F1-Score: 99.79%
+              </td>
+            </tr>
+            <tr>
+              <td>
+                AUC Score: 0.99
+              </td>
+            </tr>
+            </tbody>
+          </table>
+              </div></div>
+              <div class="col">
+                <div class="mb-3">
+                  <img src="https://i.pinimg.com/originals/c0/a7/10/c0a71046b00bf94efe7a7134eee62f55.png" class="img-fluid" alt="ROC CURVE image">
+                  </div>
+                  </div>
+                  </div>
+          <!-- </p> -->
           
-          <div class="row">
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DDV(m<sub>e</sub>)</italic>:</label>{{ val1 }}
-            
-          </div></div>
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DDL(m<sub>e</sub>)</italic>:</label>{{ val2 }}
-            
-          </div>
-          </div></div>
-
-          <div class="row">
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DD<sub>&#181 1</sub>(ATO)</italic>:</label>{{ val3 }}
-            
-          </div></div>
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DD<sub>&#181 3</sub>(POL)n<sub>s</sub></italic>:</label>{{ val4 }}
-            
-          </div></div>
-          </div>
-
-          <div class="row">
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DDE(d<sub>m</sub>)</italic>:</label>{{ val5 }}
-            
-          </div></div>
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DD<sub>&#181 3</sub>(VAN)t<sub>a</sub></italic>:</label>{{ val6 }}
-           
-          </div></div></div>
-
-          <div class="row">
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DD<sub>&#181 2</sub>(ATO)t<sub>a</sub></italic>:</label>{{ val7 }}
-            
-          </div></div>
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DG<sub>&#181 2</sub>(HYD)s<sub>c</sub></italic>:</label> {{ val8 }}
-            
-          </div></div></div>
-
-          <div class="row">
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DG<sub>&#181 5</sub>(PSA)s<sub>c</sub></italic>:</label> {{ val9 }}
-            
-          </div></div>
-          <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>Tox<sub>i</sub>(c<sub>j</sub>)<sub>r</sub></italic>:</label>{{ val10 }}
-            
-          </div></div></div>
-          <a href="{% url 'test' %}" class="btn btn-primary ">Test Again</a>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
         </div>
       </div>
-      </form>
     </div>
 
+  <!-- Results for CART -->
     <div class="col-sm-6">
       <div class="card">
         <div class="card-header">
             Results
           </div>
         <div class="card-body">
-          {% if ans == 'Your nanoparticle is NON-TOXIC' %}
-          <h5 class="card-title">Results: <span style="color: green">{{ ans }}</span>  </h5>
+          {% if xg_ans == 'Your nanoparticle is NON-TOXIC' %}
+          <h5 class="card-title">XGBoost Results: <span style="color: green">{{ xg_ans }}</span>  </h5>
           {% else %}
-          <h5 class="card-title">Results: <span style="color: red">{{ ans }}</span>  </h5>
+          <h5 class="card-title">XGBoost Results: <span style="color: red">{{ xg_ans }}</span>  </h5>
+          {% endif %}
+          <br>
+          {% if cart_ans == 'Your nanoparticle is NON-TOXIC' %}
+          <h5 class="card-title">CART Results: <span style="color: green">{{ cart_ans }}</span>  </h5>
+          {% else %}
+          <h5 class="card-title">CART Results: <span style="color: red">{{ cart_ans }}</span>  </h5>
           {% endif %}
           <br>
           <!-- <p class="card-text">  -->

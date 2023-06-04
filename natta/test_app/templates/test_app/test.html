@@ -2,25 +2,38 @@
 {% block content %} 
 
 <br>
-<br>
+<form action="{% url 'predict' %}" method="POST">
+    {% csrf_token %}
+
 <div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="col-sm-1"></div>
+
+  <!-- FOR USER"S NANOPARTICLE --> 
+    <div class="col-sm-5 mb-3 mb-sm-0">
       
-        <form action="{% url 'predict' %}" method="POST">
       <div class="card">
+
+        <div class="card-header fw-bolder">
+          Nanoparticle of Interest
+        </div>
+
         <div class="card-body">
-          <h5 class="card-title">Input</h5>
-          <p class="card-text">Fill out the needed information of nanoparticles to test for toxicity.</p>
-          {% csrf_token %}
+          <p class="card-text fst-italic">Fill out the needed information of your nanoparticle to test for toxicity.</p>
+
           <div class="row">
           <div class="col">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DDV(m<sub>e</sub>)</italic>:</label>
+            <label for="exampleFormControlInput1" class="form-label"><italic>DV(m<sub>e</sub>)</italic>:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="The molar volume of the NP, considering the measures of the toxic effects"></i>
             <input type="text" class="form-control" id="val1" name="val1">
           </div></div>
+
           <div class="col">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DDL(m<sub>e</sub>)</italic>:</label>
+            <label for="exampleFormControlInput1" class="form-label"><italic>DL(m<sub>e</sub>)</italic>:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="The size of the NP, considering the measures of the toxic effects."></i>
             <input type="text" class="form-control" id="val2" name="val2" >
           </div>
           </div></div>
@@ -28,12 +41,17 @@
           <div class="row">
           <div class="col">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DD<sub>&#181 1</sub>(ATO)</italic>:</label>
+            <label for="exampleFormControlInput1" class="form-label"><italic>D<sub>&#181 1</sub>(ATO)b<sub>t</sub></italic>:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="Spectral moment of order 1 (weighted by atomic weight), depending on the biological systems"></i>
             <input type="text" class="form-control" id="val3" name="val3" >
           </div></div>
+
           <div class="col">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DD<sub>&#181 3</sub>(POL)n<sub>s</sub></italic>:</label>
+            <label for="exampleFormControlInput1" class="form-label"><italic>D<sub>&#181 3</sub>(POL)n<sub>s</sub></italic>:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="Spectral moment of order 3 (weighted by polarizability), depending on the shape of the NP."></i>
             <input type="text" class="form-control" id="val4" name="val4" >
           </div></div>
           </div>
@@ -41,119 +59,136 @@
           <div class="row">
           <div class="col">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DDE(d<sub>m</sub>)</italic>:</label>
+            <label for="exampleFormControlInput1" class="form-label"><italic>DE(d<sub>m</sub>)</italic>:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="The electronegativity of the NP, considering the conditions under which the sizes of the NP was measured."></i>
             <input type="text" class="form-control" id="val5" name="val5" >
           </div></div>
+
           <div class="col">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DD<sub>&#181 3</sub>(VAN)t<sub>a</sub></italic>:</label>
+            <label for="exampleFormControlInput1" class="form-label"><italic>D<sub>&#181 3</sub>(VAN)t<sub>a</sub></italic>:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="Spectral moment of order 3 (weighted by the atomic van der Waals radius), depending on the exposure times."></i>
             <input type="text" class="form-control" id="val6" name="val6" >
           </div></div></div>
 
           <div class="row">
           <div class="col">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DD<sub>&#181 2</sub>(ATO)t<sub>a</sub></italic>:</label>
+            <label for="exampleFormControlInput1" class="form-label"><italic>D<sub>&#181 2</sub>(ATO)t<sub>a</sub></italic>:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="Spectral moment of order 2 (weighted by atomic weight), depending on the exposure times."></i>
             <input type="text" class="form-control" id="val7"  name="val7" >
           </div></div>
+
           <div class="col">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DG<sub>&#181 2</sub>(HYD)s<sub>c</sub></italic>:</label>
+            <label for="exampleFormControlInput1" class="form-label"><italic>G<sub>&#181 2</sub>(HYD)s<sub>c</sub></italic>:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="General spectral moment of order 2 (weighted by hydrophobicity), depending on the chemical structure of the coating agent used."></i>
             <input type="text" class="form-control" id="val8" name="val8" >
           </div></div></div>
 
           <div class="row">
           <div class="col">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>DG<sub>&#181 5</sub>(PSA)s<sub>c</sub></italic>:</label>
+            <label for="exampleFormControlInput1" class="form-label"><italic>G<sub>&#181 5</sub>(PSA)s<sub>c</sub></italic>:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="General spectral moment of order 5 (weighted by the polar surface area), depending on the chemical structure of the coating agent used. "></i>
             <input type="text" class="form-control" id="val9" name="val9" >
           </div></div>
+        
           <div class="col">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"><italic>Tox<sub>i</sub>(c<sub>j</sub>)<sub>r</sub></italic>:</label>
-            <input type="text" class="form-control" id="val10" name="val10" >
-          </div></div></div>
-          <button class="btn btn-primary" type="submit">Test for toxicity</button>
-          <!-- <a href="{% url 'predict' %}" class="btn btn-primary ">Test for toxicity</a> -->
+            <div class="mb-3">
+            </div></div>
+          </div>
+
+         
+
         </div>
       </div>
-      </form>
+      
     </div>
 
-    <div class="col-sm-6">
+  <!-- FOR REFERENCE NANOPARTICLE -->
+
+    <div class="col-sm-5 mb-3 mb-sm-0">
+      
       <div class="card">
-        <div class="card-header">
-          Descriptions of Variables
+
+        <div class="card-header fw-bolder">
+          Reference Nanoparticle
         </div>
-        <div class="card-body" style="height: 530px; overflow: scroll;">
-          <div class="card-title">
-            <h6>DDV(m<sub>e</sub>)</h6> 
+
+        <div class="card-body">
+          <p class="card-text fst-italic">Select the experimental conditions for the reference nanoparticle.</p>
+
+          <div class="row">
+          <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Type of Nanoparticle:</label>
+            {{form2.np}}
+          </div></div>
+
+          <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Measure of Toxicity:</label>
+            {{form2.me}}
           </div>
-          <p class="card-text"> Characterizes the change in molar volume between the NPs used in
-            the new output and reference states, considering the measures of toxic effects
-          </p>
-          <div class="card-title">
-            <h6>DDL(m<sub>e</sub>)</h6> 
+          </div></div>
+
+          <div class="row">
+          <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Biosystem/Endpoint:</label>
+            {{form2.bt}}
+          </div></div>
+
+          <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Category of Shape:</label>
+            {{form2.ns}}
+          </div></div>
           </div>
-          <p class="card-text"> Accounts for the variation in size between the NPs used in the new
-            and reference states, considering the measures of toxic effects.
-          <div class="card-title">
-            <h6>DD<sub>&#181 1</sub>(ATO)</h6> 
-          </div>
-          <p class="card-text"> Characterizes the change in spectral moment of order 3
-            (weighted by polarizability) between the NPs used in the new and reference states,
-            with consideration of the shapes of the NPs.
-          </p>
-          <div class="card-title">
-            <h6>DD<sub>&#181 3</sub>(POL)n<sub>s</sub></h6> 
-          </div>
-          <p class="card-text"> Describes the variation in electronegativity between the NPs
-            used in the new and reference states, depending on the conditions under which
-            the sizes of the NPs were measured.
-          </p>
-          <div class="card-title">
-            <h6>DDE(d<sub>m</sub>)</h6> 
-          </div>
-          <p class="card-text"> A perturbation term that accounts for the difference in the spectral
-            moment of order 1, which is weighted by the atomic weight between the NPs
-            used in the new and reference states. This variable is influenced by the biological
-            systems involved in the analysis.
-          </p>
-          <div class="card-title">
-            <h6>DD<sub>&#181 3</sub>(VAN)t<sub>a</sub></h6> 
-          </div>
-          <p class="card-text"> Accounts for the difference in the spectral moment of order 3
-            (weighted by atomic van der Waals radius) between the NPs used in the new and
-            reference states, considering the exposure times
-          </p>
-          <div class="card-title">
-            <h6>DD<sub>&#181 2</sub>(ATO)t<sub>a</sub></h6> 
-          </div>
-          <p class="card-text"> A perturbation term describing how the spectral moment of
-            order two changes (weighted by atomic weight) between the new and reference
-            states of the NPs, accounting for the exposure times involved in the experiment.
-          <div class="card-title">
-            <h6>DG<sub>&#181 2</sub>(HYD)s<sub>c</sub></h6> 
-          </div>
-          <p class="card-text"> Represents the general spectral moment of order two weighted
-            by hydrophobicity, which accounts for the difference between the chemical
-            structures of the coating agents used in the new and reference states.
-          </p>
-          <div class="card-title">
-            <h6>DG<sub>&#181 5</sub>(PSA)s<sub>c</sub></h6> 
-          </div>
-          <p class="card-text"> Represents the general spectral moment of order five weighted
-            by polar surface area, which characterizes the difference between the chemical
-            structures of the coating agents used in the new and reference states
-          </p>
-          <div class="card-title">
-            <h6>Tox<sub>i</sub>(c<sub>j</sub>)<sub>r</sub></h6> 
-          </div>
-          <p class="card-text"> A dummy classification variable that defines the toxic impact of
-            the NP used in the reference state.
-          </p>
+
+          <div class="row">
+          <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Condition:</label>
+            <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
+            data-bs-content="The conditions under which the sizes of the NP was measured."></i>
+            {{form2.dm}}
+          </div></div>
+
+          <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Exposure/Assay Time:</label>
+            {{form2.ta}}
+          </div></div></div>
+
+          <div class="row">
+          <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Coating Agent:</label>
+            {{form2.sc}}
+          </div></div></div>
+      
+        </div>
+      </div>
+      <br>
+        <div class="d-grid gap-2 col-8 mx-auto">
+          <button class="btn btn-primary btn-lg fw-normal" type="submit">Test for toxicity</button>
         </div>
       </div>
     </div>
-  </div>
+  
+</form>   
+
+<script>
+      var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+        container: 'body'
+        })
+</script>
+
 {%endblock%}
