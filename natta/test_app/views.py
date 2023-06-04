@@ -109,6 +109,7 @@ def predict(request):
    arr= data_array.reshape(1,10)
    print(arr)
 
+   #predict 
    ans1 = cls1.predict(arr)
    print(ans1)
 
@@ -119,15 +120,15 @@ def predict(request):
    final2=''
 
    if(ans1==1):
-      final1='Your nanoparticle is NON-TOXIC'
+      final1='NON-TOXIC'
    elif(ans1==0):
-      final1 = 'Your nanoparticle is TOXIC'
+      final1 = 'TOXIC'
    print(final1)
 
    if(ans2==1):
-      final2='Your nanoparticle is NON-TOXIC'
+      final2='NON-TOXIC'
    elif(ans2==0):
-      final2 = 'Your nanoparticle is TOXIC'
+      final2 = 'TOXIC'
    print(final2)
 
    return render(request, "test_app/result.html",{'xg_ans':final1,'cart_ans':final2})

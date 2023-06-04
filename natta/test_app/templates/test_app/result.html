@@ -3,25 +3,19 @@
 
 <br>
 <div class="row">
-
+  <div class="col-sm-1"></div>
   <!-- Results for XGBOOST -->
-    <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="col-sm-5 mb-3 mb-sm-0">
         
       <div class="card">
         <div class="card-header">
-            Results
+            Results of XGBoost Model
           </div>
         <div class="card-body">
-          {% if xg_ans == 'Your nanoparticle is NON-TOXIC' %}
-          <h5 class="card-title">XGBoost Results: <span style="color: green">{{ xg_ans }}</span>  </h5>
+          {% if xg_ans == 'NON-TOXIC' %}
+          <h5 class="card-title">Classification: <span style="color: green">{{ xg_ans }}</span>  </h5>
           {% else %}
-          <h5 class="card-title">XGBoost Results: <span style="color: red">{{ xg_ans }}</span>  </h5>
-          {% endif %}
-          <br>
-          {% if cart_ans == 'Your nanoparticle is NON-TOXIC' %}
-          <h5 class="card-title">CART Results: <span style="color: green">{{ cart_ans }}</span>  </h5>
-          {% else %}
-          <h5 class="card-title">CART Results: <span style="color: red">{{ cart_ans }}</span>  </h5>
+          <h5 class="card-title">Classification: <span style="color: red">{{ xg_ans }}</span>  </h5>
           {% endif %}
           <br>
           <!-- <p class="card-text">  -->
@@ -37,32 +31,37 @@
             <tbody>
             <tr>
               <td>
-                Accuracy: 99.63%
+                Accuracy: 99.63235294%
               </td>
             </tr>
             <tr>
               <td>
-                Precision: 99.79%
+                Precision: 99.78746015%
               </td>
             </tr>
             <tr>
               <td>
-                Specificity: 98.64%
+                Specificity: 98.63945578%
               </td>
             </tr>
             <tr>
               <td>
-                Recall: 99.79%
+                Recall: 99.78746015%
               </td>
             </tr>
             <tr>
               <td>
-                F1-Score: 99.79%
+                F1-Score: 99.78746015%
               </td>
             </tr>
             <tr>
               <td>
-                AUC Score: 0.99
+                MCC Score: 0.9842691593
+              </td>
+            </tr>
+            <tr>
+              <td>
+                AUC Score: 0.9921345797
               </td>
             </tr>
             </tbody>
@@ -82,22 +81,16 @@
     </div>
 
   <!-- Results for CART -->
-    <div class="col-sm-6">
+    <div class="col-sm-5 mb-3 mb-sm-0">
       <div class="card">
         <div class="card-header">
-            Results
+            Results of CART model
           </div>
         <div class="card-body">
-          {% if xg_ans == 'Your nanoparticle is NON-TOXIC' %}
-          <h5 class="card-title">XGBoost Results: <span style="color: green">{{ xg_ans }}</span>  </h5>
+          {% if cart_ans == 'NON-TOXIC' %}
+          <h5 class="card-title">Classification: <span style="color: green">{{ cart_ans }}</span>  </h5>
           {% else %}
-          <h5 class="card-title">XGBoost Results: <span style="color: red">{{ xg_ans }}</span>  </h5>
-          {% endif %}
-          <br>
-          {% if cart_ans == 'Your nanoparticle is NON-TOXIC' %}
-          <h5 class="card-title">CART Results: <span style="color: green">{{ cart_ans }}</span>  </h5>
-          {% else %}
-          <h5 class="card-title">CART Results: <span style="color: red">{{ cart_ans }}</span>  </h5>
+          <h5 class="card-title">Classification: <span style="color: red">{{ cart_ans }}</span>  </h5>
           {% endif %}
           <br>
           <!-- <p class="card-text">  -->
@@ -113,32 +106,37 @@
             <tbody>
             <tr>
               <td>
-                Accuracy: 99.63%
+                Accuracy: 99.35661765%
               </td>
             </tr>
             <tr>
               <td>
-                Precision: 99.79%
+                Precision: 99.68085106%
               </td>
             </tr>
             <tr>
               <td>
-                Specificity: 98.64%
+                Specificity: 97.95918367%
               </td>
             </tr>
             <tr>
               <td>
-                Recall: 99.79%
+                Recall: 99.5749203%
               </td>
             </tr>
             <tr>
               <td>
-                F1-Score: 99.79%
+                F1-Score: 99.62785752%
               </td>
             </tr>
             <tr>
               <td>
-                AUC Score: 0.99
+                MCC Score: 0.9725572891
+              </td>
+            </tr>
+            <tr>
+              <td>
+                AUC Score: 0.9876705199
               </td>
             </tr>
             </tbody>
@@ -146,7 +144,7 @@
               </div></div>
               <div class="col">
                 <div class="mb-3">
-                  <img src="https://i.pinimg.com/originals/c0/a7/10/c0a71046b00bf94efe7a7134eee62f55.png" class="img-fluid" alt="ROC CURVE image">
+                  <img src="https://i.pinimg.com/originals/65/2b/99/652b99c3a004fb375ef9a953f998a46f.png" class="img-fluid" alt="ROC CURVE image">
                   </div>
                   </div>
                   </div>
