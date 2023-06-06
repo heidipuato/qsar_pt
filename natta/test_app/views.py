@@ -55,7 +55,8 @@ def predict(request):
    dm = request.POST.get('dm')
    ta = request.POST.get('ta')
    sc = request.POST.get('sc')
-
+   print(np,me,bt,ns,dm,ta,sc)
+   
    ref = Reference.objects.get(np__exact=np,me__exact=me,bt__exact=bt,ns__exact=ns,dm__exact=dm,ta__exact=ta,sc__exact=sc)
    
    f1 = ref.f1

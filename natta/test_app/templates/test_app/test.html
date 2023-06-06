@@ -128,13 +128,13 @@
           <div class="col">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Type of Nanoparticle:</label>
-            {{form2.np}}
+            <div id = "np">{{form2.np}}</div>
           </div></div>
 
           <div class="col">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Measure of Toxicity:</label>
-            {{form2.me}}
+            <div id = "me">{{form2.me}}</div>
           </div>
           </div></div>
 
@@ -142,13 +142,13 @@
           <div class="col">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Biosystem/Endpoint:</label>
-            {{form2.bt}}
+            <div id = "bt">{{form2.bt}}</div>
           </div></div>
 
           <div class="col">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Category of Shape:</label>
-            {{form2.ns}}
+            <div id = "ns">{{form2.ns}}</div>
           </div></div>
           </div>
 
@@ -158,20 +158,20 @@
             <label for="exampleFormControlInput1" class="form-label">Condition:</label>
             <i class="fa-regular fa-circle-question fa-xs" data-bs-toggle="popover" data-bs-container="body" 
             data-bs-content="The conditions under which the sizes of the NP was measured."></i>
-            {{form2.dm}}
+            <div id = "dm">{{form2.dm}}</div>
           </div></div>
 
           <div class="col">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Exposure/Assay Time:</label>
-            {{form2.ta}}
+            <div id = "ta">{{form2.ta}}</div>
           </div></div></div>
 
           <div class="row">
           <div class="col">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Coating Agent:</label>
-            {{form2.sc}}
+            <div id = "sc">{{form2.sc}}</div>
           </div></div></div>
       
         </div>
@@ -189,6 +189,13 @@
       var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
         container: 'body'
         })
+
+      // function update() {
+			// 	var select = document.getElementById('np');
+			// 	var option = select.options[select.selectedIndex];
+      // }
+			// update();
+      
 </script>
 
 {%endblock%}
