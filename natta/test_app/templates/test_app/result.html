@@ -14,12 +14,15 @@
           </div>
         <div class="card-body">
           {% if xg_ans == 'NON-TOXIC' %}
-          <h5 class="card-title">Classification: <span style="color: green">{{ xg_ans }}</span>  </h5>
+          <h5 class="card-title text-center">Classification: <span style="color: green">{{ xg_ans }}</span>  </h5>
           {% else %}
-          <h5 class="card-title">Classification: <span style="color: red">{{ xg_ans }}</span>  </h5>
+          <h5 class="card-title text-center">Classification: <span style="color: red">{{ xg_ans }}</span>  </h5>
           {% endif %}
           <br>
           <!-- <p class="card-text">  -->
+            <div class="card-header">
+              XGBoost Model Information
+            </div>
             <div class="row">
               <div class="col">
               <div class="mb-3">
@@ -32,12 +35,12 @@
             <tbody>
               <tr>
                 <td>
-                  MCC Score: 0.9842691593
+                  MCC Score: 98.42691593%
                 </td>
               </tr>
               <tr>
                 <td>
-                  AUC Score: 0.9921345797
+                  AUC Score: 99.21345797%
                 </td>
               </tr>
             <tr>
@@ -84,12 +87,15 @@
           </div>
         <div class="card-body">
           {% if cart_ans == 'NON-TOXIC' %}
-          <h5 class="card-title">Classification: <span style="color: green">{{ cart_ans }}</span>  </h5>
+          <h5 class="card-title text-center">Classification: <span style="color: green">{{ cart_ans }}</span>  </h5>
           {% else %}
-          <h5 class="card-title">Classification: <span style="color: red">{{ cart_ans }}</span>  </h5>
+          <h5 class="card-title text-center">Classification: <span style="color: red">{{ cart_ans }}</span>  </h5>
           {% endif %}
           <br>
           <!-- <p class="card-text">  -->
+            <div class="card-header">
+              CART Model Information
+            </div>
             <div class="row">
               <div class="col">
               <div class="mb-3">
@@ -102,12 +108,12 @@
             <tbody>
               <tr>
                 <td>
-                  MCC Score: 0.9725572891
+                  MCC Score: 97.25572891%
                 </td>
               </tr>
               <tr>
                 <td>
-                  AUC Score: 0.9876705199
+                  AUC Score: 98.76705199%
                 </td>
               </tr>
             <tr>
